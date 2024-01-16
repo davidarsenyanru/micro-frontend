@@ -1,18 +1,37 @@
-# Vue 3 + TypeScript + Vite
+# Тестовое задание микрофронтенд
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Описание
+Этот проект является примером использования микросервисной архитектуры на фронтенде с использованием Vue 3, Pinia, TypeScript и Tailwind CSS. Проект состоит из двух микрофронтов: `header-app` и `products-app`, которые координируют своё взаимодействие через общий глобальный стор.
 
-## Recommended IDE Setup
+## Технологии
+- **Vue 3**: Современный фреймворк для построения интерактивных пользовательских интерфейсов.
+- **Pinia**: Централизованное управление состоянием для Vue.js приложений.
+- **TypeScript**: Предоставляет строгую типизацию для улучшения кода и его поддержки.
+- **Tailwind CSS**: Утилитарный фреймворк для быстрой и гибкой верстки.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Микрофронты
 
-## Type Support For `.vue` Imports in TS
+### Header-App
+`Header-app` является компонентом шапки приложения и выполняет следующие функции:
+- Показывает общее количество товаров, добавленных в корзину.
+- Отображает общую стоимость товаров в корзине.
+- Автоматически обновляется при изменениях в глобальном сторе, отражая текущее состояние корзины.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+### Products-App
+`Products-app` отвечает за отображение списка доступных продуктов и включает:
+- Визуальное представление каждого продукта.
+- Название и цену продукта.
+- Кнопку "Добавить в корзину", активирующую механизм добавления товара в корзину через глобальный стор.
+- Кнопки управления количеством товара в корзине после его добавления.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Взаимодействие через Глобальный Стор
+Микрофронты используют общий Pinia стор для синхронизации состояния корзины. Это позволяет обеспечить согласованность данных между различными частями приложения и поддерживать их актуальность в реальном времени.
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Установка и Запуск
+Для запуска проекта выполните следующие шаги:
+
+```bash
+git clone git@github.com:davidarsenyanru/micro-frontend.git
+cd micro-frontend
+npm install
+npm run dev
